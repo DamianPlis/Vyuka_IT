@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Název návodu | IT Návody</title>
+
+```
+<!-- Jednotný styl pro všechny návody -->
+<link rel="stylesheet" href="navody-print.css">
+
+<!-- Volitelné: lokální úpravy pro tento konkrétní návod -->
+<style>
+    /* Zde můžeš přidat specifické styly pro tento návod */
+    /* Např. jiná barva pro sekci: */
+    /* .gate-and { border-left-color: #27ae60; } */
+</style>
+```
+
+</head>
+<body>
+
+```
+<!-- ===================================
+     HLAVIČKA DOKUMENTU
+     =================================== -->
+<header>
+    <h1>Název návodu</h1>
+    <!-- Volitelný podtitulek -->
+    <p class="text-center text-muted">Stručný popis čeho se návod týká</p>
+</header>
+
+<!-- ===================================
+     OBSAH (volitelný pro delší návody)
+     =================================== -->
+<!--
+<nav class="no-print">
+    <h2>Obsah</h2>
+    <ol>
+        <li><a href="#uvod">Úvod</a></li>
+        <li><a href="#potrebujes">Co budeš potřebovat</a></li>
+        <li><a href="#postup">Postup</a></li>
+        <li><a href="#tipy">Tipy a triky</a></li>
+    </ol>
+</nav>
+-->
+
+<!-- ===================================
+     ÚVOD / PŘEHLED
+     =================================== -->
+<section id="uvod">
+    <h2>Úvod</h2>
+    <p>Stručné vysvětlení, co se v tomto návodu naučíš a proč je to užitečné.</p>
+    
+    <!-- Upozornění (volitelné) -->
+    <div class="warning">
+        <strong>⚠️ Pozor:</strong> Důležité upozornění před začátkem práce.
+    </div>
+</section>
+
+<!-- ===================================
+     CO BUDEŠ POTŘEBOVAT
+     =================================== -->
+<section id="potrebujes">
+    <h2>Co budeš potřebovat</h2>
+    <ul>
+        <li>Položka 1</li>
+        <li>Položka 2</li>
+        <li>Položka 3</li>
+    </ul>
+</section>
+
+<!-- ===================================
+     POSTUP (hlavní část)
+     =================================== -->
+<section id="postup">
+    <h2>Postup</h2>
+
+    <!-- Varianta A: Kroky jako číslovaný seznam -->
+    <ol class="steps">
+        <li>
+            <h3>První krok</h3>
+            <p>Popis prvního kroku. Můžeš přidat obrázek:</p>
+            <figure>
+                <img src="obrazky/krok1.png" alt="Popis obrázku">
+                <figcaption>Obrázek 1: Popis co je na obrázku</figcaption>
+            </figure>
+        </li>
+        <li>
+            <h3>Druhý krok</h3>
+            <p>Popis druhého kroku s ukázkou kódu:</p>
+            <pre><code>&lt;p&gt;Ukázka HTML kódu&lt;/p&gt;</code></pre>
+        </li>
+        <li>
+            <h3>Třetí krok</h3>
+            <p>Popis třetího kroku.</p>
+        </li>
+    </ol>
+
+    <!-- Varianta B: Kroky jako rozbalovací sekce (details) -->
+    <!--
+    <details>
+        <summary>Krok 1: Název kroku</summary>
+        <p>Obsah kroku, který se zobrazí po rozbalení.</p>
+        <p>Při tisku se rozbalí automaticky.</p>
+    </details>
+    
+    <details>
+        <summary>Krok 2: Další krok</summary>
+        <p>Další obsah...</p>
+    </details>
+    -->
+</section>
+
+<!-- ===================================
+     REFERENČNÍ TABULKA (volitelné)
+     =================================== -->
+<section id="reference">
+    <h2>Přehledová tabulka</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Název</th>
+                <th>Popis</th>
+                <th>Příklad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>položka1</code></td>
+                <td>Popis položky</td>
+                <td>Příklad použití</td>
+            </tr>
+            <tr>
+                <td><code>položka2</code></td>
+                <td>Popis položky</td>
+                <td>Příklad použití</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- ===================================
+     PRAVDIVOSTNÍ TABULKA (pro logické hradla)
+     =================================== -->
+<!--
+<section>
+    <h2>Pravdivostní tabulka</h2>
+    <table class="truth-table">
+        <thead>
+            <tr>
+                <th>A</th>
+                <th>B</th>
+                <th>Výstup</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>0</td><td>0</td><td>0</td></tr>
+            <tr><td>0</td><td>1</td><td>0</td></tr>
+            <tr><td>1</td><td>0</td><td>0</td></tr>
+            <tr><td>1</td><td>1</td><td>1</td></tr>
+        </tbody>
+    </table>
+</section>
+-->
+
+<!-- ===================================
+     TIPY A TRIKY
+     =================================== -->
+<section id="tipy">
+    <h2>Tipy a triky</h2>
+    
+    <div class="tip">
+        <strong>💡 Tip:</strong> Užitečná rada pro lepší výsledky.
+    </div>
+    
+    <h3>Časté chyby</h3>
+    <ul>
+        <li><strong>Chyba 1:</strong> Popis problému a jak ho vyřešit.</li>
+        <li><strong>Chyba 2:</strong> Další častý problém.</li>
+    </ul>
+</section>
+
+<!-- ===================================
+     ROZŠÍŘENÍ PRO POKROČILÉ (volitelné)
+     =================================== -->
+<!--
+<section id="pokrocile">
+    <h2>Pro pokročilé</h2>
+    <details>
+        <summary>Rozšíření 1: Název</summary>
+        <p>Obsah pro ty, kdo chtějí jít dál...</p>
+    </details>
+</section>
+-->
+
+<!-- ===================================
+     PATIČKA S AUTOREM A LICENCÍ
+     =================================== -->
+<footer>
+    <p>
+        Autor: <strong>David</strong> | Montessori ZŠ Archa
+        <br>
+        Licence: <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.cs" target="_blank" rel="noopener">CC BY-SA 4.0</a>
+        <br>
+        <span class="text-small">Můžeš volně sdílet a upravovat s uvedením autora.</span>
+    </p>
+</footer>
+```
+
+</body>
+</html>
