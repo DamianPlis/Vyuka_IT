@@ -1,0 +1,466 @@
+/**
+
+- navody-print.css
+- Jednotný styl pro tištěné návody
+- Autor: David (Montessori ZŠ Archa)
+- Licence: CC BY-SA 4.0
+  */
+
+/* ===================================
+CSS PROMĚNNÉ (změň zde pro úpravu celé sady)
+=================================== */
+:root {
+/* Barvy */
+–color-primary: #2c3e50;       /* Hlavní barva (nadpisy) */
+–color-secondary: #3498db;     /* Zvýraznění, linky */
+–color-accent: #2980b9;        /* Akcenty (h2) */
+–color-text: #333;             /* Běžný text */
+–color-light: #7f8c8d;         /* Šedý text (patička) */
+–color-bg-section: #f8f9fa;    /* Pozadí sekcí */
+–color-border: #dee2e6;        /* Okraje */
+–color-table-header: #3498db;  /* Záhlaví tabulek */
+–color-table-stripe: #ecf0f1;  /* Sudé řádky tabulek */
+–color-warning-bg: #fff3cd;    /* Pozadí upozornění */
+–color-warning-border: #ffc107;
+–color-tip-bg: #d4edda;        /* Pozadí tipů */
+–color-tip-border: #28a745;
+–color-code-bg: #2c3e50;       /* Pozadí kódu */
+–color-code-text: #2ecc71;     /* Text kódu */
+
+```
+/* Typografie */
+--font-main: Arial, Helvetica, sans-serif;
+--font-code: 'Courier New', Consolas, monospace;
+--font-size-base: 14px;
+--font-size-h1: 24px;
+--font-size-h2: 18px;
+--font-size-h3: 16px;
+--font-size-small: 12px;
+--line-height: 1.5;
+
+/* Rozměry */
+--max-width: 210mm;             /* A4 šířka */
+--padding-page: 15mm;
+--spacing-section: 20px;
+--border-radius: 6px;
+```
+
+}
+
+/* ===================================
+ZÁKLADNÍ LAYOUT
+=================================== */
+
+- {
+  box-sizing: border-box;
+  }
+
+html {
+font-size: var(–font-size-base);
+}
+
+body {
+font-family: var(–font-main);
+max-width: var(–max-width);
+margin: 0 auto;
+padding: var(–padding-page);
+line-height: var(–line-height);
+color: var(–color-text);
+background: white;
+}
+
+/* ===================================
+TYPOGRAFIE
+=================================== */
+h1 {
+font-size: var(–font-size-h1);
+color: var(–color-primary);
+text-align: center;
+border-bottom: 3px solid var(–color-secondary);
+padding-bottom: 10px;
+margin-bottom: 20px;
+page-break-after: avoid;
+}
+
+h2 {
+font-size: var(–font-size-h2);
+color: var(–color-accent);
+margin-top: var(–spacing-section);
+margin-bottom: 12px;
+border-left: 4px solid var(–color-secondary);
+padding-left: 10px;
+page-break-after: avoid;
+}
+
+h3 {
+font-size: var(–font-size-h3);
+color: var(–color-primary);
+margin-top: 15px;
+margin-bottom: 8px;
+page-break-after: avoid;
+}
+
+p {
+margin: 0 0 10px 0;
+orphans: 3;
+widows: 3;
+}
+
+/* ===================================
+SEKCE A KONTEJNERY
+=================================== */
+.section,
+.step,
+.gate-section {
+background-color: var(–color-bg-section);
+border: 1px solid var(–color-border);
+border-radius: var(–border-radius);
+padding: 15px;
+margin: var(–spacing-section) 0;
+page-break-inside: avoid;
+}
+
+/* Rozbalovací sekce (details/summary) */
+details {
+margin: 10px 0;
+border: 1px solid var(–color-border);
+border-radius: var(–border-radius);
+page-break-inside: avoid;
+}
+
+details summary {
+background: var(–color-bg-section);
+padding: 10px 15px;
+cursor: pointer;
+font-weight: bold;
+color: var(–color-primary);
+}
+
+details summary:hover {
+background: var(–color-table-stripe);
+}
+
+details[open] summary {
+border-bottom: 1px solid var(–color-border);
+}
+
+details > *:not(summary) {
+padding: 15px;
+}
+
+/* ===================================
+TABULKY
+=================================== */
+table {
+width: 100%;
+border-collapse: collapse;
+margin: 15px 0;
+font-size: 0.9em;
+page-break-inside: avoid;
+}
+
+th {
+background-color: var(–color-table-header);
+color: white;
+padding: 10px 8px;
+text-align: left;
+font-weight: bold;
+border: 1px solid var(–color-accent);
+}
+
+td {
+padding: 8px;
+border: 1px solid var(–color-border);
+vertical-align: top;
+}
+
+tr:nth-child(even) {
+background-color: var(–color-table-stripe);
+}
+
+/* Pravdivostní tabulky (kompaktní) */
+table.truth-table {
+width: auto;
+margin: 10px auto;
+}
+
+table.truth-table th,
+table.truth-table td {
+text-align: center;
+padding: 6px 12px;
+font-family: var(–font-code);
+}
+
+/* ===================================
+KÓD A PREFORMÁTOVANÝ TEXT
+=================================== */
+code {
+background-color: var(–color-code-bg);
+color: var(–color-code-text);
+padding: 2px 6px;
+border-radius: 3px;
+font-family: var(–font-code);
+font-size: 0.9em;
+}
+
+pre {
+background-color: var(–color-code-bg);
+color: var(–color-code-text);
+padding: 15px;
+border-radius: var(–border-radius);
+overflow-x: auto;
+font-family: var(–font-code);
+font-size: 0.85em;
+line-height: 1.4;
+page-break-inside: avoid;
+}
+
+pre code {
+background: none;
+padding: 0;
+color: inherit;
+}
+
+/* ===================================
+UPOZORNĚNÍ A TIPY
+=================================== */
+.warning,
+.pozor {
+background-color: var(–color-warning-bg);
+border-left: 4px solid var(–color-warning-border);
+padding: 12px 15px;
+margin: 15px 0;
+border-radius: 0 var(–border-radius) var(–border-radius) 0;
+page-break-inside: avoid;
+}
+
+.tip,
+.info {
+background-color: var(–color-tip-bg);
+border-left: 4px solid var(–color-tip-border);
+padding: 12px 15px;
+margin: 15px 0;
+border-radius: 0 var(–border-radius) var(–border-radius) 0;
+page-break-inside: avoid;
+}
+
+/* ===================================
+SEZNAMY
+=================================== */
+ul, ol {
+margin: 10px 0;
+padding-left: 25px;
+}
+
+li {
+margin-bottom: 5px;
+}
+
+/* Kroky (číslované velké) */
+ol.steps {
+counter-reset: step-counter;
+list-style: none;
+padding-left: 0;
+}
+
+ol.steps > li {
+counter-increment: step-counter;
+margin: 15px 0;
+padding-left: 45px;
+position: relative;
+}
+
+ol.steps > li::before {
+content: counter(step-counter);
+position: absolute;
+left: 0;
+top: 0;
+width: 30px;
+height: 30px;
+background: var(–color-secondary);
+color: white;
+border-radius: 50%;
+text-align: center;
+line-height: 30px;
+font-weight: bold;
+}
+
+/* ===================================
+OBRÁZKY A SCHÉMATA
+=================================== */
+img {
+max-width: 100%;
+height: auto;
+display: block;
+margin: 15px auto;
+}
+
+figure {
+margin: 15px 0;
+text-align: center;
+page-break-inside: avoid;
+}
+
+figcaption {
+font-size: var(–font-size-small);
+color: var(–color-light);
+margin-top: 8px;
+font-style: italic;
+}
+
+/* SVG schémata */
+.schema,
+.diagram {
+background: white;
+border: 1px solid var(–color-border);
+border-radius: var(–border-radius);
+padding: 10px;
+margin: 15px 0;
+page-break-inside: avoid;
+}
+
+/* ===================================
+POMOCNÉ TŘÍDY
+=================================== */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-small { font-size: var(–font-size-small); }
+.text-muted { color: var(–color-light); }
+.bold { font-weight: bold; }
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.no-print { display: block; }
+
+/* Dvousloupcový layout */
+.columns-2 {
+column-count: 2;
+column-gap: 20px;
+}
+
+/* ===================================
+PATIČKA (AUTOR + LICENCE)
+=================================== */
+footer,
+.footer {
+margin-top: 30px;
+padding-top: 15px;
+border-top: 1px solid var(–color-border);
+text-align: center;
+font-size: var(–font-size-small);
+color: var(–color-light);
+}
+
+footer a,
+.footer a {
+color: var(–color-light);
+text-decoration: none;
+}
+
+footer a:hover,
+.footer a:hover {
+text-decoration: underline;
+}
+
+/* ===================================
+TISK (@media print)
+=================================== */
+@media print {
+body {
+max-width: none;
+padding: 0;
+font-size: 11pt;
+}
+
+```
+/* Správné barvy při tisku */
+* {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+
+/* Skryj prvky určené jen pro obrazovku */
+.no-print {
+    display: none !important;
+}
+
+/* Stránkování */
+h1 {
+    page-break-before: avoid;
+}
+
+h2, h3 {
+    page-break-after: avoid;
+}
+
+.section,
+.step,
+table,
+pre,
+figure,
+details {
+    page-break-inside: avoid;
+}
+
+/* Rozbal všechny details při tisku */
+details {
+    display: block !important;
+}
+
+details summary {
+    display: none;
+}
+
+details > *:not(summary) {
+    display: block !important;
+    padding: 0;
+}
+
+/* Patička na každé stránce */
+@page {
+    margin: 15mm;
+    @bottom-center {
+        content: "© David | CC BY-SA 4.0";
+    }
+}
+
+/* Odkazy - zobraz URL */
+a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: var(--color-light);
+}
+
+/* Patička dokumentu */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+```
+
+}
+
+/* ===================================
+RESPONZIVITA (pro náhled na obrazovce)
+=================================== */
+@media screen and (max-width: 600px) {
+body {
+padding: 10px;
+}
+
+```
+.columns-2 {
+    column-count: 1;
+}
+
+table {
+    font-size: 0.8em;
+}
+
+th, td {
+    padding: 6px 4px;
+}
+```
+
+}
