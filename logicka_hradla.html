@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logická hradla - Tahák | IT Návody</title>
+    <link rel="stylesheet" href="navody-print.css">
+</head>
+<body>
+
+```
+<header>
+    <h1>Logická hradla - Tahák</h1>
+    <p class="text-center text-muted">Přehled základních hradel, pravdivostní tabulky a troubleshooting</p>
+</header>
+
+<!-- ===================================
+     ZÁKLADNÍ HRADLA
+     =================================== -->
+<section>
+    <h2>Základní hradla</h2>
+
+    <!-- NOT -->
+    <div class="section">
+        <h3>NOT (invertor)</h3>
+        <p><strong>Co dělá:</strong> Obrací hodnotu – z 0 udělá 1 a naopak.</p>
+        <p><strong>Ve Scratch:</strong> <code>NE &lt;podmínka&gt;</code></p>
+        
+        <table class="truth-table">
+            <thead>
+                <tr><th>Vstup</th><th>Výstup</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>0</td><td>1</td></tr>
+                <tr><td>1</td><td>0</td></tr>
+            </tbody>
+        </table>
+        
+        <p><strong>Příklad:</strong> Lampa svítí, když <em>NENÍ</em> den → senzor světla + NOT = noční lampa</p>
+    </div>
+
+    <!-- AND -->
+    <div class="section">
+        <h3>AND (a zároveň)</h3>
+        <p><strong>Co dělá:</strong> Výstup je 1 pouze když jsou <em>OBA</em> vstupy 1.</p>
+        <p><strong>Ve Scratch:</strong> <code>&lt;podmínka1&gt; a &lt;podmínka2&gt;</code></p>
+        
+        <table class="truth-table">
+            <thead>
+                <tr><th>A</th><th>B</th><th>Výstup</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>0</td><td>1</td><td>0</td></tr>
+                <tr><td>1</td><td>0</td><td>0</td></tr>
+                <tr><td>1</td><td>1</td><td>1</td></tr>
+            </tbody>
+        </table>
+        
+        <p><strong>Příklad:</strong> Trezor se otevře, když zadáš správný kód <em>A</em> máš správný klíč.</p>
+    </div>
+
+    <!-- OR -->
+    <div class="section">
+        <h3>OR (nebo)</h3>
+        <p><strong>Co dělá:</strong> Výstup je 1 když je <em>ALESPOŇ JEDEN</em> vstup 1.</p>
+        <p><strong>Ve Scratch:</strong> <code>&lt;podmínka1&gt; nebo &lt;podmínka2&gt;</code></p>
+        
+        <table class="truth-table">
+            <thead>
+                <tr><th>A</th><th>B</th><th>Výstup</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>0</td><td>1</td><td>1</td></tr>
+                <tr><td>1</td><td>0</td><td>1</td></tr>
+                <tr><td>1</td><td>1</td><td>1</td></tr>
+            </tbody>
+        </table>
+        
+        <p><strong>Příklad:</strong> Alarm zazvoní, když se otevřou dveře <em>NEBO</em> okno.</p>
+    </div>
+</section>
+
+<!-- ===================================
+     ODVOZENÁ HRADLA
+     =================================== -->
+<section>
+    <h2>Odvozená hradla</h2>
+
+    <!-- NAND -->
+    <div class="section">
+        <h3>NAND (negovaný AND)</h3>
+        <p><strong>Co dělá:</strong> Opak AND – výstup je 0 pouze když jsou OBA vstupy 1.</p>
+        <p><strong>Vzorec:</strong> NOT(A AND B)</p>
+        
+        <table class="truth-table">
+            <thead>
+                <tr><th>A</th><th>B</th><th>Výstup</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>0</td><td>0</td><td>1</td></tr>
+                <tr><td>0</td><td>1</td><td>1</td></tr>
+                <tr><td>1</td><td>0</td><td>1</td></tr>
+                <tr><td>1</td><td>1</td><td>0</td></tr>
+            </tbody>
+        </table>
+        
+        <div class="tip">
+            <strong>💡 Proč je NAND speciální?</strong> 
+            Z NAND hradel můžeš postavit jakékoli jiné hradlo! Proto se mu říká "univerzální hradlo".
+        </div>
+    </div>
+
+    <!-- NOR -->
+    <div class="section">
+        <h3>NOR (negovaný OR)</h3>
+        <p><strong>Co dělá:</strong> Opak OR – výstup je 1 pouze když jsou OBA vstupy 0.</p>
+        <p><strong>Vzorec:</strong> NOT(A OR B)</p>
+        
+        <table class="truth-table">
+            <thead>
+                <tr><th>A</th><th>B</th><th>Výstup</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>0</td><td>0</td><td>1</td></tr>
+                <tr><td>0</td><td>1</td><td>0</td></tr>
+                <tr><td>1</td><td>0</td><td>0</td></tr>
+                <tr><td>1</td><td>1</td><td>0</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- XOR -->
+    <div class="section">
+        <h3>XOR (exkluzivní OR)</h3>
+        <p><strong>Co dělá:</strong> Výstup je 1 když je <em>PRÁVĚ JEDEN</em> vstup 1.</p>
+        <p><strong>Vzorec:</strong> (A AND NOT B) OR (NOT A AND B)</p>
+        
+        <table class="truth-table">
+            <thead>
+                <tr><th>A</th><th>B</th><th>Výstup</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>0</td><td>1</td><td>1</td></tr>
+                <tr><td>1</td><td>0</td><td>1</td></tr>
+                <tr><td>1</td><td>1</td><td>0</td></tr>
+            </tbody>
+        </table>
+        
+        <p><strong>Příklad:</strong> Světlo na schodišti – rozsvítí se, když zmáčkneš <em>JEDEN</em> z vypínačů (ne oba).</p>
+    </div>
+</section>
+
+<!-- ===================================
+     TROUBLESHOOTING
+     =================================== -->
+<section>
+    <h2>Když to nefunguje</h2>
+    
+    <div class="warning">
+        <strong>⚠️ Vždy kontroluj v tomto pořadí:</strong>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Problém</th>
+                <th>Možná příčina</th>
+                <th>Řešení</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>LED vůbec nesvítí</td>
+                <td>Špatná polarita LED nebo baterie</td>
+                <td>Otoč LED (delší nožička = +)</td>
+            </tr>
+            <tr>
+                <td>LED svítí slabě</td>
+                <td>Vybitá baterie nebo špatný rezistor</td>
+                <td>Změř napětí, zkontroluj hodnotu R</td>
+            </tr>
+            <tr>
+                <td>Obvod nereaguje na spínač</td>
+                <td>Špatný kontakt, floating vstup</td>
+                <td>Zkontroluj spoje, přidej pull-down R</td>
+            </tr>
+            <tr>
+                <td>Výstup je opačný než v tabulce</td>
+                <td>Záměna NPN/PNP, nebo chybí NOT</td>
+                <td>Zkontroluj typ tranzistoru (BC337 = NPN)</td>
+            </tr>
+            <tr>
+                <td>Tranzistor se zahřívá</td>
+                <td>Příliš velký proud, chybí bázový R</td>
+                <td>Přidej rezistor 1kΩ k bázi</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>BC337 - Rozložení nožiček</h3>
+    <pre>
+```
+
+-----
+
+/     
+|  •  |  ← plochá strana k sobě
+|_____|
+| | |
+C B E
+
+C = Collector (kolektor)
+B = Base (báze)  
+E = Emitter (emitor)</pre>
+</section>
+
+```
+<!-- ===================================
+     OD HRADEL K PROCESORU
+     =================================== -->
+<section>
+    <h2>Od hradel k procesoru</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Počet hradel</th>
+                <th>Co můžeš postavit</th>
+                <th>K čemu to je</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1 hradlo</td>
+                <td>Rozhodování (IF)</td>
+                <td>Základní logika</td>
+            </tr>
+            <tr>
+                <td>2 hradla</td>
+                <td>RS flip-flop</td>
+                <td>1-bitová paměť</td>
+            </tr>
+            <tr>
+                <td>5 hradel</td>
+                <td>Half-adder</td>
+                <td>Sčítačka 1+1</td>
+            </tr>
+            <tr>
+                <td>~50 hradel</td>
+                <td>4-bitová ALU</td>
+                <td>Základní počítání</td>
+            </tr>
+            <tr>
+                <td>miliardy</td>
+                <td>Moderní procesor</td>
+                <td>Tvůj počítač/telefon</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="tip">
+        <strong>💡 Fun fact:</strong> Procesor ve tvém telefonu má přes 10 miliard tranzistorů. 
+        Každý z nich funguje jako malý spínač – stejně jako ten, co jsi právě postavil/a!
+    </div>
+</section>
+
+<!-- ===================================
+     PATIČKA
+     =================================== -->
+<footer>
+    <p>
+        Autor: <strong>David</strong> | Montessori ZŠ Archa
+        <br>
+        Licence: <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.cs" target="_blank" rel="noopener">CC BY-SA 4.0</a>
+    </p>
+</footer>
+```
+
+</body>
+</html>
