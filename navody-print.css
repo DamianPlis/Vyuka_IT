@@ -530,9 +530,79 @@ footer a:hover,
 }
 
 /* ===================================
+   NAVIGACE
+   =================================== */
+nav.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-primary);
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+nav.site-nav .nav-logo {
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+nav.site-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+nav.site-nav a {
+  color: white;
+  padding: 4px 10px;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+}
+
+nav.site-nav a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+nav.site-nav a.active {
+  border-bottom: 2px solid var(--color-secondary);
+}
+
+nav.site-nav .btn-print {
+  background: var(--color-secondary);
+  color: white;
+  padding: 4px 12px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-main);
+  font-size: var(--font-size-base);
+}
+
+/* Hamburger — skrytý na velkých obrazovkách */
+.nav-toggle { display: none; }
+
+.nav-hamburger {
+  display: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0 6px;
+  line-height: 44px;
+  user-select: none;
+}
+
+/* ===================================
    TISK (@media print)
    =================================== */
 @media print {
+
+  nav.site-nav { display: none !important; }
 
   /* Správné barvy při tisku (neprosvítit) */
   * {
@@ -645,6 +715,40 @@ footer a:hover,
    RESPONZIVITA (náhled na mobilu)
    =================================== */
 @media screen and (max-width: 600px) {
+  /* Hamburger menu */
+  nav.site-nav {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 44px;
+  }
+
+  nav.site-nav .nav-logo {
+    line-height: 44px;
+    flex: 1;
+  }
+
+  .nav-hamburger {
+    display: flex;
+    align-items: center;
+  }
+
+  nav.site-nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: var(--color-primary);
+    padding: 0 0 8px;
+    gap: 2px;
+  }
+
+  .nav-toggle:checked ~ ul {
+    display: flex;
+  }
+
+  nav.site-nav .btn-print {
+    display: none;
+  }
+
   body {
     padding: 12px;
   }
